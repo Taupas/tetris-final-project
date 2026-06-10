@@ -3,10 +3,7 @@
 > **1142 學期 計算機程式語言 期末專題**  
 > 以 Python Flask 作為 Web 前端、C 語言作為核心引擎，透過 **ctypes** 進行語言間整合。
 
-**遊戲網址（本地）：** http://127.0.0.1:5000/tetris
-
-**課程範例參考：** [ryanjih/cgame1142demo](https://github.com/ryanjih/cgame1142demo)
-
+**遊戲網址（本地）：**https://tetris-final-project.onrender.com/tetris
 ---
 
 ## 專題名稱與功能介紹
@@ -323,25 +320,6 @@ python app.py
 
 ---
 
-## Resources（期末繳交清單）
-
-| 繳交項目 | 檔案 |
-|----------|------|
-| GitHub Repository 連結 | [`submission/01_GITHUB_REPOSITORY.md`](submission/01_GITHUB_REPOSITORY.md) |
-| 完整程式碼結構 | [`submission/02_CODE_STRUCTURE.md`](submission/02_CODE_STRUCTURE.md) |
-| README.md（本文件） | `README.md` |
-| Cursor Prompt 對話紀錄 | [`submission/04_CURSOR_PROMPT_RECORD.md`](submission/04_CURSOR_PROMPT_RECORD.md) |
-| C 規範對照 | [`c_engine/README_C.md`](c_engine/README_C.md) |
-
----
-
-## 可選擴充
-
-- Hold 方塊、Ghost 落點預覽
-- Stack 實作 Undo
-- WebSocket 多人對戰
-
----
 
 ## 授權
 
