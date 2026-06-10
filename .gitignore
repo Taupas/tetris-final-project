@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# C 編譯暫存
+*.gch
+*.o
+
+# Build（可選：若希望 repo 不含 DLL，取消下行註解）
+# lib/*.dll

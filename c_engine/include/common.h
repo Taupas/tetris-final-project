@@ -1,0 +1,15 @@
+#ifndef TETRIS_COMMON_H
+#define TETRIS_COMMON_H
+
+#define BOARD_WIDTH 10
+#define BOARD_HEIGHT 20
+#define MAX_GAMES 32
+#define PIECE_TYPES 7
+
+#ifdef _WIN32
+#define API_EXPORT __declspec(dllexport)
+#else
+#define API_EXPORT __attribute__((visibility("default")))
+#endif
+
+#endif

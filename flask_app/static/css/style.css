@@ -1,0 +1,500 @@
+:root {
+  --bg: #0f1419;
+  --panel: #1a2332;
+  --accent: #3d9eff;
+  --text: #e8eef4;
+  --muted: #8b9cb3;
+  --grid: #2a3544;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.layout {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.game-area {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.side {
+  width: 180px;
+}
+
+.board-wrap {
+  padding: 0.75rem;
+}
+
+#board-canvas,
+#next-canvas {
+  display: block;
+  background: #0a0e12;
+  border: 2px solid var(--grid);
+  border-radius: 4px;
+}
+
+.stats {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 0.75rem;
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stats dd {
+  margin: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.controls button {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  filter: brightness(1.1);
+}
+
+#btn-pause {
+  background: var(--grid);
+}
+
+.status {
+  text-align: center;
+  margin: 0.5rem 0 0;
+  min-height: 1.25rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+#leaderboard {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.score-form {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.score-form.hidden {
+  display: none;
+}
+
+.score-form input {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--grid);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.help {
+  margin-top: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.help p {
+  margin: 0.25rem 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  background: var(--grid);
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.mode-select {
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.mode-select h2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.mode-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--grid);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.mode-btn:hover {
+  border-color: var(--accent);
+  background: #141c28;
+}
+
+.mode-btn-puzzle:hover {
+  border-color: #9b7fd4;
+}
+
+.mode-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.mode-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.btn-back {
+  display: block;
+  margin: 0 auto 1rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--grid);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-back:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+#classic-game {
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-area-inner {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 拼圖模式（8×8 拖放） */
+.puzzle-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.puzzle-wrap {
+  border-radius: 16px;
+  padding: 1rem 1.25rem 1.25rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.puzzle-tray-label {
+  margin: 0 0 0.35rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.puzzle-score {
+  margin: 0 0 0.75rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#puzzle-board {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #7a6898;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  cursor: crosshair;
+}
+
+.puzzle-piece-canvas {
+  display: block;
+  width: 96px;
+  height: 96px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.puzzle-piece-canvas.dragging {
+  opacity: 0.65;
+  cursor: grabbing;
+}
+
+.puzzle-status {
+  text-align: center;
+  min-height: 1.25rem;
+  margin: 0.5rem 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.puzzle-tray {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 110px;
+  margin: 0.5rem 0;
+  padding: 0.25rem 0;
+}
+
+.puzzle-piece-slot {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 88px;
+  min-width: 88px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+}
+
+.puzzle-piece-slot.empty {
+  opacity: 0.35;
+}
+
+.puzzle-piece-grid {
+  display: grid;
+  gap: 3px;
+  padding: 4px;
+}
+
+.puzzle-cell {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.puzzle-cell.filled {
+  background: var(--block, #5c3c8c);
+  border: 2px solid var(--stroke, #2e1e48);
+  box-shadow: inset 0 2px 0 var(--hi, #8a6ab8);
+}
+
+.puzzle-tray-empty {
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.puzzle-piece {
+  position: relative;
+  cursor: grab;
+  touch-action: none;
+  padding: 4px;
+}
+
+.puzzle-piece.used {
+  opacity: 0.25;
+  pointer-events: none;
+  cursor: default;
+}
+
+.puzzle-piece.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.puzzle-piece canvas {
+  display: block;
+}
+
+.puzzle-new-btn {
+  width: 100%;
+  padding: 0.55rem;
+  border: none;
+  border-radius: 8px;
+  background: #7a68a0;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.puzzle-new-btn:hover {
+  background: #6a5890;
+}
+
+.puzzle-leaderboard-section {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.puzzle-leaderboard-section h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.puzzle-leaderboard-list {
+  margin: 0 0 0.5rem;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.55;
+}
+
+.puzzle-leaderboard-list li {
+  margin: 0.15rem 0;
+}
+
+.puzzle-score-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.puzzle-score-form.hidden {
+  display: none;
+}
+
+.puzzle-score-form input {
+  padding: 0.45rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+.puzzle-score-form button {
+  padding: 0.45rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.puzzle-score-form button:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.puzzle-help {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.puzzle-help h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.puzzle-help p {
+  margin: 0.2rem 0;
+}
+
+.btn-back-puzzle {
+  color: #c8b8e8;
+  border-color: #6a5890;
+}
+
+.btn-back-puzzle:hover {
+  color: #fff;
+  border-color: #fff;
+}

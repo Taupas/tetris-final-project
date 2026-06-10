@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>俄羅斯方塊</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <h1>俄羅斯方塊</h1>
+    </header>
+
+    <section id="mode-select" class="mode-select panel">
+      <h2>選擇遊戲模式</h2>
+      <div class="mode-buttons">
+        <button type="button" id="btn-mode-classic" class="mode-btn">
+          <span class="mode-title">經典模式</span>
+          <span class="mode-desc">方塊自動下落 · 鍵盤操作</span>
+        </button>
+        <button type="button" id="btn-mode-puzzle" class="mode-btn mode-btn-puzzle">
+          <span class="mode-title">拼圖模式</span>
+          <span class="mode-desc">8×8 棋盤 · 拖放方塊</span>
+        </button>
+      </div>
+    </section>
+
+    <main id="classic-game" class="game-area hidden">
+      <button type="button" class="btn-back" data-back>← 返回選單</button>
+      <div class="game-area-inner">
+        <section class="panel side">
+          <h2>下一塊</h2>
+          <canvas id="next-canvas" width="120" height="120"></canvas>
+          <dl class="stats">
+            <dt>分數</dt><dd id="score">0</dd>
+            <dt>消行</dt><dd id="lines">0</dd>
+            <dt>等級</dt><dd id="level">1</dd>
+          </dl>
+          <div class="controls">
+            <button id="btn-new" type="button">新遊戲</button>
+            <button id="btn-pause" type="button">暫停</button>
+          </div>
+        </section>
+
+        <section class="panel board-wrap">
+          <canvas id="board-canvas" width="300" height="600"></canvas>
+          <p id="status" class="status"></p>
+        </section>
+
+        <section class="panel side">
+          <h2>排行榜</h2>
+          <ol id="leaderboard"></ol>
+          <form id="score-form" class="score-form hidden">
+            <input id="player-name" type="text" maxlength="20" placeholder="你的名字" />
+            <button type="submit">送出成績</button>
+          </form>
+          <h2>操作方式</h2>
+          <div class="help">
+            <p><kbd>←</kbd><kbd>→</kbd> 移動</p>
+            <p><kbd>↑</kbd> 旋轉 · <kbd>↓</kbd> 軟降</p>
+            <p><kbd>Space</kbd> 硬降 · <kbd>P</kbd> 暫停</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <main id="puzzle-game" class="puzzle-layout hidden">
+      <button type="button" class="btn-back btn-back-puzzle" data-back>← 返回選單</button>
+      <div id="puzzle-wrap" class="puzzle-wrap">
+        <p id="puzzle-score" class="puzzle-score">0</p>
+        <p id="puzzle-status" class="puzzle-status"></p>
+        <p class="puzzle-tray-label">拖曳方塊到棋盤</p>
+        <div id="puzzle-tray" class="puzzle-tray">
+          <div class="puzzle-piece-slot">
+            <canvas class="puzzle-piece-canvas" data-slot="0" width="96" height="96" aria-label="方塊1"></canvas>
+          </div>
+          <div class="puzzle-piece-slot">
+            <canvas class="puzzle-piece-canvas" data-slot="1" width="96" height="96" aria-label="方塊2"></canvas>
+          </div>
+          <div class="puzzle-piece-slot">
+            <canvas class="puzzle-piece-canvas" data-slot="2" width="96" height="96" aria-label="方塊3"></canvas>
+          </div>
+        </div>
+        <canvas id="puzzle-board" width="320" height="320"></canvas>
+        <button type="button" id="puzzle-new" class="puzzle-new-btn">新遊戲</button>
+        <div class="puzzle-leaderboard-section">
+          <h2>歷史分數</h2>
+          <ol id="puzzle-leaderboard" class="puzzle-leaderboard-list"></ol>
+          <form id="puzzle-score-form" class="puzzle-score-form hidden">
+            <input id="puzzle-player-name" type="text" maxlength="20" placeholder="你的名字" />
+            <button type="submit">送出成績</button>
+          </form>
+        </div>
+        <div class="puzzle-help">
+          <h2>操作方式</h2>
+          <p>將上方方塊拖曳到棋盤空格放置</p>
+          <p>棋盤上的方塊不會自動下落</p>
+          <p>填滿整行或整列即可消除得分</p>
+          <p>三塊都無法再放時才會結束</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>window.APP_BASE = "{{ app_base }}";</script>
+  <script src="{{ url_for('static', filename='js/game.js') }}?v=11"></script>
+  <script src="{{ url_for('static', filename='js/puzzle.js') }}?v=12"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}?v=10"></script>
+</body>
+</html>
