@@ -205,7 +205,7 @@ cd tetris
 run.bat
 ```
 
-瀏覽器開啟：**http://127.0.0.1:5000/tetris**
+瀏覽器開啟：**https://tetris-final-project.onrender.com/tetris**
 
 手動步驟：
 
