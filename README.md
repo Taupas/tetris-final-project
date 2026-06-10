@@ -192,11 +192,9 @@ tetris/
 │   └── static/{css,js}/
 ├── lib/tetris_engine.dll # build.bat 產生
 ├── build.bat · run.bat
-├── requirements.txt
-└── submission/           # 繳交文件
+└── requirements.txt
 ```
 
-完整說明見 [`submission/02_CODE_STRUCTURE.md`](submission/02_CODE_STRUCTURE.md)。
 
 ### 4.2 如何執行 (How to run)
 
@@ -293,8 +291,6 @@ python app.py
 | 拼圖方塊不顯示 | ctypes 改扁平陣列讀 `slot_dr` / `slot_dc` |
 | 過早 game over | 改為「托盤上**全部**方塊都放不下」才結束 |
 | L 形無法貼邊 | `resolve_placement` + 方塊中心對齊滑鼠 |
-| 遊戲路徑 | 統一為 `/tetris` 前綴 |
-| 期末繳交文件 | README、程式碼結構、Cursor 紀錄 |
 
 ### Cursor Prompt 使用紀錄（摘要）
 
@@ -316,12 +312,5 @@ python app.py
 
 > 「解釋 `Board *` 與 `cells` 索引及 free 順序。」
 
-完整對話整理見 [`submission/04_CURSOR_PROMPT_RECORD.md`](submission/04_CURSOR_PROMPT_RECORD.md)。
 
 ---
-
-
-## 授權
-
-教學與課程繳交用途 · MIT License
-
